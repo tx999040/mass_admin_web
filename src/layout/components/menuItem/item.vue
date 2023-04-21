@@ -1,33 +1,49 @@
 <template>
   <div class="item" @click="goUrl">
-    <el-icon><Star /></el-icon>
-    <span>{{ title }}</span>
+    <!-- <el-icon><Star /></el-icon> -->
+    <span class="title">{{ title }}</span>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
+import { computed, defineComponent } from "vue";
+import { useRouter } from "vue-router";
+import { useStore } from "vuex";
 export default defineComponent({
-  name: 'MenuItem',
+  name: "MenuItem",
   functional: true,
   props: {
     url: {
       type: String,
-      default: ''
+      default: "",
     },
     title: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
 
   setup(props) {
-    const route = useRouter()
+    const route = useRouter();
+    const store = useStore();
+    const cacheTags = computed(() => {
+      return store.state.cacheTags;
+    });
     const goUrl = () => {
-      route.push({ path: props.url })
-    }
-    return { goUrl }
-  }
-})
+      route.push({ path: props.url });
+      store.dispatch("setCacheTags", props.title);
+    };
+    return {
+      goUrl,
+      cacheTags,
+    };
+  },
+});
 </script>
+<style lang="scss" scoped>
+.item {
+  .title {
+    font-size: 12px;
+  }
+}
+</style>
 

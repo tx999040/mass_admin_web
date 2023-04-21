@@ -1,28 +1,39 @@
 <template>
   <div class="bread-wrap">
-    <el-tag v-for="tag in tags" :key="tag.name" closable class="mix">
-      {{ tag.name }}
+    <el-tag
+      v-for="tag in tags"
+      :key="tag.name"
+      closable
+      class="mix"
+      @close="removeTag(tag)"
+    >
+      {{ tag }}
     </el-tag>
   </div>
 </template>
 <script lang="ts">
-import { computed, defineComponent } from 'vue'
-import { useRouter } from 'vue-router'
-import { useStore } from 'vuex'
+import { computed, defineComponent, onMounted } from "vue";
+import { useStore } from "vuex";
 export default defineComponent({
-  name: 'BreadCrumb',
+  name: "BreadCrumb",
   setup() {
-    const routers = useRouter()
-    const store = useStore()
+    const store = useStore();
     const tags = computed(() => {
-      return store.state.cachedTags
-    })
+      return store.state.cacheTags;
+    });
+    onMounted(() => {
+      // console.log(tags,'tags')
+    });
+    const removeTag = (tag: string) => {
+      store.dispatch("deleteCacheTags", tag);
+    };
+
     return {
-      tags: tags,
-      routers: routers
-    }
-  }
-})
+      tags,
+      removeTag,
+    };
+  },
+});
 </script>
 <style lang="scss" scoped>
 .bread-wrap {

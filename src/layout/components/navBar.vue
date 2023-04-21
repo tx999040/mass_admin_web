@@ -4,14 +4,23 @@
     <div>
       <el-popover placement="top-start" :width="120" :hidden="hover">
         <template #default>
-          <div class="info-wrap" style="text-align: center; padding: 0 5px; color: #666">
+          <div
+            class="info-wrap"
+            style="text-align: center; padding: 0 5px; color: #666"
+          >
             <p
               class="text-one"
-              style="cursor: pointer; line-height: 35px; border-bottom: 1px solid #1c69ff"
+              style="
+                cursor: pointer;
+                line-height: 35px;
+                border-bottom: 1px solid #1c69ff;
+              "
             >
               用户信息
             </p>
-            <p class="text-two" style="cursor: pointer; line-height: 35px">退出登录</p>
+            <p class="text-two" style="cursor: pointer; line-height: 35px">
+              退出登录
+            </p>
           </div>
         </template>
         <template #reference>
@@ -26,17 +35,23 @@
   </div>
 </template>
   <script lang="ts">
-import { defineComponent, ref } from 'vue'
-
+import {
+  computed,
+  defineComponent,
+  initCustomFormatter,
+  onMounted,
+  ref,
+} from "vue";
+import { useStore } from "vuex";
 export default defineComponent({
-  name: 'navBar',
+  name: "navBar",
   setup() {
-    const hover = ref(false)
+    const hover = ref(false);
     return {
-      hover
-    }
-  }
-})
+      hover,
+    };
+  },
+});
 </script>
   
   <style lang="scss" scoped>

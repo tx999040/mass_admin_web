@@ -17,35 +17,30 @@
 </template>
     
     <script lang="ts">
-import SidebarItem from './sideItem.vue'
-import routers from '@/router'
-import { useRouter } from 'vue-router'
-import { defineComponent } from 'vue'
+import SidebarItem from "./sideItem.vue";
+import routers from "@/router";
+import { useRouter } from "vue-router";
+import { defineComponent } from "vue";
 export default defineComponent({
   components: { SidebarItem },
-  name: 'SideMenu',
+  name: "SideMenu",
   setup() {
-    const router = useRouter()
-    const routes = routers.options.routes
-    const handleOpen = (v: any) => {
-      console.log(v)
-    }
-    const handleClose = (v: any) => {
-      console.log(v)
-    }
+    const router = useRouter();
+    const routes = routers.options.routes;
+    const handleOpen = (v: any) => {};
+    const handleClose = (v: any) => {};
     const goPage = (path: string) => {
-      console.log(path, '9090')
-      router.push(path)
-    }
+      router.push({ path });
+    };
 
     return {
       routes,
       handleOpen,
       handleClose,
-      goPage
-    }
-  }
-})
+      goPage,
+    };
+  },
+});
 </script>
   <style lang="scss">
 .side-menu {

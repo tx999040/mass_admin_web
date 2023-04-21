@@ -18,41 +18,44 @@
         class="nest-menu"
       />
     </el-sub-menu>
-    <app-link v-else :to="item.path">
-      <el-menu-item :index="item.path" :class="{ 'submenu-title-noDropdown': !isNest }">
+    <div v-else :to="item.path">
+      <el-menu-item
+        :index="item.path"
+        :class="{ 'submenu-title-noDropdown': !isNest }"
+      >
         <item :url="item.path" :title="item.meta.title" />
       </el-menu-item>
-    </app-link>
+    </div>
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
-import item from './item.vue'
+import { defineComponent, onMounted } from "vue";
+import item from "./item.vue";
 export default defineComponent({
-  name: 'SideItem',
+  name: "SideItem",
   props: {
     item: {
       type: Object,
-      required: true
+      required: true,
     },
     isNest: {
       type: Boolean,
-      default: false
+      default: false,
     },
     basePath: {
       type: String,
-      default: ''
-    }
+      default: "",
+    },
   },
   components: {
-    item
+    item,
   },
   setup() {
-    onMounted(() => {})
-    return {}
-  }
-})
+    onMounted(() => {});
+    return {};
+  },
+});
 </script>
 <style lang="scss" scoped>
-@import './sidebar.scss';
+@import "./sidebar.scss";
 </style>
