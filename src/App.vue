@@ -5,24 +5,24 @@
   </div>
 </template>
 <script lang="ts">
-import { defineComponent, onMounted } from 'vue'
-import { useStore } from 'vuex'
-import router from './router'
+import { defineComponent, onMounted } from "vue";
+import { useStore } from "vuex";
+import router from "./router";
 export default defineComponent({
   setup() {
     const init = () => {
-      const routes = router.options.routes
-      const store = useStore()
-      store.dispatch('setViewTags', routes)
-    }
+      const routes = router.options.routes;
+      const store = useStore();
+      store.dispatch("setViewTags", routes);
+    };
     onMounted(() => {
-      init()
-    })
+      init();
+    });
     return {
-      init
-    }
-  }
-})
+      init,
+    };
+  },
+});
 </script>
 
 <style lang="scss">

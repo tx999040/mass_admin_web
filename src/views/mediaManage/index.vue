@@ -4,80 +4,67 @@
   </div>
 </template>
   <script lang="ts">
-import { defineComponent } from 'vue'
-import tables from '@/components/table/index.vue'
+import { defineComponent } from "vue";
+import tables from "@/components/table/index.vue";
 export default defineComponent({
-  name: 'mediaHome',
+  name: "mediaHome",
   components: {
-    tables
+    tables,
   },
   setup() {
     const tableProp = [
       {
-        label: '姓名',
-        prop: 'name'
+        type: "selection",
+        width: 50,
+        align: "center",
       },
       {
-        label: '日期',
-        prop: 'date'
+        title: "序号",
+        key: "id",
+      },
+
+      {
+        title: "类型",
+        key: "categoryName",
       },
       {
-        label: '时间',
-        prop: 'time'
+        title: "内容封面",
+        key: "img",
+        isSlot: true,
       },
       {
-        label: '体重',
-        prop: 'weight'
+        title: "主名称",
+        key: "name",
       },
       {
-        label: '性别',
-        prop: 'sex'
+        title: "内容",
+        key: "remark",
+        isSlot: true,
       },
       {
-        label: '年纪',
-        prop: 'age'
-      }
-    ]
-    const data = [
-      {
-        name: '张三',
-        date: '2023-04-12',
-        age: 18,
-        sex: '男',
-        weight: '80kg',
-        time: '16:12'
+        title: "简介",
+        key: "introduction",
       },
       {
-        name: '小六',
-        date: '2023-04-12',
-        age: 18,
-        sex: '男',
-        weight: '80kg',
-        time: '16:12'
+        title: "状态",
+        isSlot: true,
       },
       {
-        name: '王五',
-        date: '2023-04-12',
-        age: 18,
-        sex: '男',
-        weight: '80kg',
-        time: '16:12'
+        title: "上传时间",
+        key: "createTime",
       },
       {
-        name: '里斯',
-        date: '2023-04-12',
-        age: 18,
-        sex: '男',
-        weight: '80kg',
-        time: '16:12'
-      }
-    ]
+        title: "操作",
+        isSlot: true,
+      },
+    ];
+    const data: any = [];
     return {
       tableProp,
-      data
-    }
-  }
-})
+      data,
+    };
+  },
+});
 </script>
   <style lang="scss">
 </style>

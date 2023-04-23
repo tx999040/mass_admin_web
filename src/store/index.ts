@@ -1,5 +1,5 @@
 import { createStore } from "vuex";
-import { createRouter } from "vue-router";
+import router from "@/router";
 import Time from "@/util";
 export interface GlobalErrorProps {
   message?: string;
@@ -84,6 +84,12 @@ export default createStore<GlobalDataProps>({
 
       if (index > -1 && index2 > -1) {
         state.cacheTags.splice(index, 1); //关闭当前页面，重定向到首页
+        console.log(router, "router");
+        if (state.cacheTags.length) {
+          router.back();
+        } else {
+          router.replace({ path: "/home" });
+        }
       }
     },
   },

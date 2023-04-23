@@ -3,34 +3,39 @@
     <el-table-column
       v-for="(item, index) in tableHeader"
       :key="index"
-      :prop="item.prop"
-      :label="item.label"
-      :width="180"
+      :prop="item.key"
+      :label="item.title"
+      :type="item.type"
+      :width="item.width"
     >
-    <template #default v-if="item.isSolt">
-       <slot/>
+      <template #default v-if="item.isSlot">
+        <slot />
       </template>
-</el-table-column>
+    </el-table-column>
   </el-table>
 </template>
 <script lang="ts">
-import { defineComponent } from 'vue'
+import { defineComponent } from "vue";
 interface propData {
-    prop: string
-    label: string
-    isSolt?: boolean
+  key?: string;
+  title?: string;
+  isSlot?: boolean;
+  type?: string;
+  width?: number;
+  align?: string;
 }
+
 export default defineComponent({
   props: {
     tableHeader: {
       type: Array<propData>,
-      default: () => []
+      default: () => [],
     },
     tableData: {
       type: Array<any>,
-      default: () => []
-    }
+      default: () => [],
+    },
   },
-  setup() {}
-})
+  setup() {},
+});
 </script>

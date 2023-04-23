@@ -1,10 +1,10 @@
 <template>
-  <div class="side-menu">
+  <div>
     <el-menu
       default-active="1"
-      class="el-menu-vertical-demo"
       @open="handleOpen"
       @close="handleClose"
+      class="side-menu"
     >
       <sidebar-item
         v-for="item in routes"
@@ -16,7 +16,7 @@
   </div>
 </template>
     
-    <script lang="ts">
+<script lang="ts">
 import SidebarItem from "./sideItem.vue";
 import routers from "@/router";
 import { useRouter } from "vue-router";
@@ -42,11 +42,10 @@ export default defineComponent({
   },
 });
 </script>
-  <style lang="scss">
+  <style lang="scss" scoped>
 .side-menu {
-  height: 100%;
-  width: 200px;
-  background-color: #fff;
+  height: calc(100vh - 66px);
+  background-color: #070b1d;
 }
 </style>
     
